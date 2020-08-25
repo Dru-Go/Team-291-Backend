@@ -1,4 +1,4 @@
-// ANCHOR initialize the server and graphql, set routes and port for the server 
+// ANCHOR initialize the server and graphql, set routes and port for the server
 import express from "express";
 import expressGraphQl from "express-graphql";
 import Schema from "./schema";
@@ -14,7 +14,6 @@ app.get("/", (req, res) => {
 	});
 });
 
-
 // Use express to initalize graphqql
 app.use(
 	"/graphql",
@@ -25,7 +24,5 @@ app.use(
 	})
 );
 
-// Listen for the port 
-app.listen(3000, () => {
-	console.log("Server Running on PORT 3000");
-});
+// Listen for the port
+app.listen(3000, () => {});
