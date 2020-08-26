@@ -1,9 +1,19 @@
 {
-  "extends": "strongloop",
-  "rules": {
-    "max-len": [2, 120, 8]
-  },
-  "env": {
-    "es6": true
-  }
+    "env": {
+        "browser": true,
+        "es2020": true
+    },
+    "extends": [
+        "standard"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": "off",
+        "no-tabs": "off",
+        "semi-spacing": "warn",
+        "comma-spacing": "warn"
+    }
 }
