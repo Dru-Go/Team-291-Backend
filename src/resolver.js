@@ -2,6 +2,6 @@
 const root = {
     hello: () => 'Hello Worlds'
     // NOTE Code goes here...
-}
+};
 
-export default root
+export default root;
