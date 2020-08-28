@@ -10,7 +10,10 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "nodemon src/index.js --exec babel-node -e js",
-		"start": "babel src -d build && cp .env build/.env && node build/index.js"
+		"clean": "rm -rf build && mkdir build",
+		"build-babel": "babel -d ./build ./src -s",
+		"build": "npm run clean && npm run build-babel",
+		"start": "npm run build && node ./build/index.js"
 	},
 	"repository": {
 		"type": "git",
@@ -41,6 +44,7 @@
 		"express": "^4.17.1",
 		"express-graphql": "^0.9.0",
 		"graphql": "^15.3.0",
-		"nodemon": "^2.0.4"
+		"nodemon": "^2.0.4",
+		"babel-preset-env": "^1.7.0"
 	}
 }
