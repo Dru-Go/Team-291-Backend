@@ -3,6 +3,8 @@ import express from 'express';
 import expressGraphQl from 'express-graphql';
 import Schema from './schema';
 import root from './resolver';
+import dotenv from 'dotenv';
+import cors from 'cors';
 
 // Initialize Express server
 const app = express();
@@ -14,15 +16,19 @@ app.get('/', (req, res) => {
 	});
 });
 
+// Use Cross origin resourse sharing to manage the security of the server
+app.use(cors());
+
 // Use express to initalize graphqql
 app.use(
 	'/graphql',
 	expressGraphQl({
 		schema: Schema,
-		rootValue: root,
+		rootValue: root, // Note root is where the resolvers are stored
 		graphiql: true
 	})
 );
 
 // Listen for the port
-app.listen(3000);
+dotenv.config();
+app.listen(process.env.PORT);
