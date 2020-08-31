@@ -1,8 +1,23 @@
 // ANCHOR initialize the server and graphql, set routes and port for the server
 import express from 'express';
-import expressGraphQl from 'express-graphql';
+import { graphqlHTTP } from 'express-graphql';
 import Schema from './schema';
 import root from './resolver';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+
+// Setting up the enviromental variables
+const PORT = process.env.PORT;
+const db = 'mongodb+srv://team-member-fahad:Pt47jvd1bjmExP52@cluster0.fti7j.mongodb.net/quick_mechanic?retryWrites=true&w=majority';
+
+// Connect to MongoDB with Mongoose.
+mongoose.Promise = global.Promise;
+mongoose.set('useFindAndModify', false);
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+.then(() => console.log('Server Connected to database'))
+.catch(err => console.error(err));
 
 // Initialize Express server
 const app = express();
@@ -17,12 +32,15 @@ app.get('/', (req, res) => {
 // Use express to initalize graphqql
 app.use(
 	'/graphql',
-	expressGraphQl({
+	cors(), // Use Cross origin resourse sharing to manage the security of the server
+    bodyParser.json(),
+	graphqlHTTP({
 		schema: Schema,
-		rootValue: root,
+		rootValue: root, // Note root is where the resolvers are stored
 		graphiql: true
 	})
 );
 
 // Listen for the port
-app.listen(3000);
+dotenv.config();
+app.listen(PORT);
