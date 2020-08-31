@@ -1,6 +1,6 @@
 // ANCHOR initialize the server and graphql, set routes and port for the server
 import express from 'express';
-import expressGraphQl from 'express-graphql';
+import { graphqlHTTP } from 'express-graphql';
 import Schema from './schema';
 import root from './resolver';
 import dotenv from 'dotenv';
@@ -22,7 +22,7 @@ app.use(cors());
 // Use express to initalize graphqql
 app.use(
 	'/graphql',
-	expressGraphQl({
+	graphqlHTTP({
 		schema: Schema,
 		rootValue: root, // Note root is where the resolvers are stored
 		graphiql: true
