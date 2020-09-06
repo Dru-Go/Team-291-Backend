@@ -1,4 +1,6 @@
 node_modules
 build
+coverage
 package-lock.json
 src/schema.graphql
+src/seed

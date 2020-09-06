@@ -2,22 +2,25 @@
 import express from 'express';
 import { graphqlHTTP } from 'express-graphql';
 import Schema from './schema';
-import root from './resolver';
+import { root } from './resolver';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 
+// Listen for the port
+dotenv.config();
+
 // Setting up the enviromental variables
 const PORT = process.env.PORT;
-const db = 'mongodb+srv://team-member-fahad:Pt47jvd1bjmExP52@cluster0.fti7j.mongodb.net/quick_mechanic?retryWrites=true&w=majority';
+const db = `mongodb+srv://Bill:${process.env.PASSWORD}@cluster0.fti7j.mongodb.net/quick_mechanic?retryWrites=true&w=majority`;
 
 // Connect to MongoDB with Mongoose.
 mongoose.Promise = global.Promise;
 mongoose.set('useFindAndModify', false);
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => console.log('Server Connected to database'))
-.catch(err => console.error(err));
+.catch(err => { console.log(db); console.error(err); });
 
 // Initialize Express server
 const app = express();
@@ -41,6 +44,4 @@ app.use(
 	})
 );
 
-// Listen for the port
-dotenv.config();
 app.listen(PORT);

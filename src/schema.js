@@ -12,37 +12,49 @@ type Query {
 	"""
     accounts: [Account!]!
     vehicles: [Vehicle!]!
+    mechanics: [Mechanic!]!
     drivers: [Driver!]!
     accounts_by_id(id: String): Account!
     vehicle_by_licence(licence: String): Vehicle!
     vehicles_by_accountID(id: String): [Vehicle]
-    mechanics(loc: String): [Mechanic]
     mechanics_details(id: String): Mechanic
 }
 
 type Mutation{
     login(input: LoginInput): Account!
     signUp(input: SignUpInput): Account!
+    newMechanic(input: MechanicInput): Mechanic!
     newBreakdown(input: BreakdownInput): Vehicle_Breakdown!
 }
 
-
-input BreakdownInput{
-    account_id: String
-    time_of_injury: String
-    type_of_breakdown: [VehicleFaliureTypes]
-    location: String
+input MechanicInput {
+	account: ID!
+	company_name: String!
+	company_img: String
+	company_relative_location: String!
+	company_absolute_location: String! # lat long
 }
 
-input LoginInput{
+
+input BreakdownInput {
+    account_id: String!
+    time_of_injury: String!
+    type_of_breakdown: [VehicleFaliureTypes]
+    location: String!
+}
+
+input LoginInput {
     user_name: String! 
     password: String!
 }
 
 input SignUpInput{
-    phone_number: String!
-    user_name: String! 
+    first_name: String! 
+    last_name: String! 
+    phone_num:String!
     password: String!
+    profile_img: String
+    account_type: AccountType!
 }
 
 enum VehicleFaliureTypes{
@@ -71,21 +83,24 @@ type Account{
     id: String
     profile_img: String
     phone_number: String
-	user_name: String
+    first_name: String
+    last_name: String
 	password: String
-    accountType: AccountType
+    account_type: AccountType
 }
 
 type Mechanic{
-    account: Account
-    location: String 
+    account: ID
     company_name: String
     company_img: String
-    company_relative_location: String
-    company_absolute_location: String
+    company_relative_location: String 
+    company_absolute_location: String # lat long
     # mechanic with multiple reviews
     reviews: [String]
 }
+
+
+
 
 type Vehicle{
     license_plate_number: String # Serves as an id 
