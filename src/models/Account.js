@@ -5,12 +5,7 @@ const Schema = mongoose.Schema;
 
 // Create the User Schema.
 const AccountSchema = new Schema({
-  id: {
-    type: mongoose.Types.ObjectId,
-    required: true,
-    unique: true
-  },
-  user_name: {
+  first_name: {
     type: String,
     required: true
   },
@@ -18,7 +13,7 @@ const AccountSchema = new Schema({
     type: String,
     required: true
   },
-  phone_num: {
+  phone_no: {
     type: String,
     required: true
   },
@@ -30,10 +25,8 @@ const AccountSchema = new Schema({
     required: true
   },
    account_type: {
-    type: Number,
-    required: true,
-    min: 0,
-    max: 4
+    type: String,
+    required: true
   }
 });
 

@@ -5,29 +5,20 @@ const Schema = mongoose.Schema;
 
 // NOTE Create the Breakdown Schema.
 const BreakdownSchema = new Schema({
-  id: {
-    type: mongoose.Types.ObjectId,
-    required: true,
-    unique: true
-  },
   time_of_crisis: {
     type: Date,
     required: true
   },
-  company_name: {
+  driver_comment: {
     type: String,
     required: true
   },
-  comapny_img: {
+  optional_vehicle_info: {
     type: String,
     required: true
   },
-   company_relative_loc: {
+   type_of_breakdown: {
     type: String
-  },
-   company_relative_absolute: {
-    type: String,
-    required: true
   },
    location_url: {
     type: String,

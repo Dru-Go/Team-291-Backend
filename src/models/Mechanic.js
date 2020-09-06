@@ -5,27 +5,24 @@ const Schema = mongoose.Schema;
 
 // NOTE Create the Mechanic Schema.
 const MechanicSchema = new Schema({
-  account_id: {
+  account: {
     type: mongoose.Types.ObjectId,
     required: true,
     unique: true
-  },
-  location: {
-    type: String,
-    required: true
   },
   company_name: {
     type: String,
     required: true
   },
-  comapny_img: {
+  company_img: {
     type: String,
     required: true
   },
-   company_relative_loc: {
-    type: String
+   company_relative_location: {
+    type: String,
+    required: true
   },
-   company_relative_absolute: {
+   company_absolute_location: {
     type: String,
     required: true
   }
