@@ -2,7 +2,7 @@
 import express from 'express';
 import { graphqlHTTP } from 'express-graphql';
 import Schema from './schema';
-import { root } from './resolver';
+import root from './resolvers/resolver';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import bodyParser from 'body-parser';

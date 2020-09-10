@@ -1,5 +1,6 @@
 // ANCHOR Here we will test resolvers
-import { root , parceArgs} from '../resolver';
+import root  from '../resolvers/resolver';
+import { parceArgs }  from '../resolvers/utils';
 
 describe('Testing Resolvers', () => {
 // NOTE test.only to test a specific test senario
@@ -10,6 +11,7 @@ describe('Testing Resolvers', () => {
   });
   
   test('should check if the parceArgs actually parses graphql inputs to standard objects', () => {
+    console.log(parceArgs)
     expect(typeof parceArgs({input: {testing: "case"}})).toEqual("object")
   });
 })
