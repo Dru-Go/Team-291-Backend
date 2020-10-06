@@ -1,5 +1,5 @@
 // ANCHOR we define the resolvers which are used as routes and controllers
-import allAccounts from './queries/accounts';
+import { accounts } from './queries/accounts';
 import signUp from './mutations/signup';
 import { mechanics } from './queries/mechanics';
 import newMechanic from './mutations/newMechanic';
@@ -8,7 +8,7 @@ const root = {
     // SECTION Queries
     hello: () => 'Hello Worlds',
     mechanics: () => mechanics(),
-    accounts: () => allAccounts(),
+    accounts: () => accounts(),
     vehicles: () => [],
     drivers: () => [],
     login: ({ input }) => [],

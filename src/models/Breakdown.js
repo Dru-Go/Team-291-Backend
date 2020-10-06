@@ -17,14 +17,14 @@ const BreakdownSchema = new Schema({
     type: String,
     required: true
   },
-   type_of_breakdown: {
+  type_of_breakdown: {
     type: String
   },
-   location_url: {
-    type: String,
-    required: true
+  location: {
+    latitude: Number,
+    longitude: Number
   }
-});
+}, { strict: false });
 
 const Breakdown = mongoose.model('Breakdown', BreakdownSchema);
 
