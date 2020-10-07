@@ -1,4 +1,4 @@
-// ANCHOR this will return all mechanics
+// ANCHOR this will return mechanics
 import Mechanic from '../../models/Mechanic';
 import geolib from 'geolib';
 export async function mechanics () {
@@ -7,10 +7,10 @@ export async function mechanics () {
 
 // TODO accept the initial location and get 5 - 10 nearest locations
 /*
- Step 1. Get all the mechainics
- Step 2. Get the distance of each mechanic to the source
+ STEP 1. Get all the mechainics
+ STEP 2. Get the distance of each mechanic to the source
      Here we use getDistance to get the distance
- Step 3. Get the 10 most closest mechainics
+ STEP 3. Get the 10 most closest mechainics
 
 */
 
@@ -21,11 +21,15 @@ function getDistance (source, mech) {
 }
 
 function sortMechanics (hashmaps, limit) {
-    hashmaps.sort((hash) => hash.distanceFromSource);
+    // NOTE sort the mechaics based on the distance from the source and return the first $limit elements
+    return hashmaps.sort((a, b) => a.distanceFromSource - b.distanceFromSource).slice(0, limit);
 }
 
-export { allMechaincs, getDistance, sortMechanics };
+export function closestMechanics (source, limit) {
+    const mechaDistances = [];
+    allMechaincs.map((mech) => {
+        mechaDistances.push(getDistance(source, mech));
+    });
 
-export async function closestMechanics (location) {
-    return await Mechanic.find().catch((error) => console.log(error));
+    return sortMechanics(mechaDistances, limit);
 }
