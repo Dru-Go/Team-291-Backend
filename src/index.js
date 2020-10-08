@@ -13,7 +13,7 @@ dotenv.config();
 
 // Setting up the enviromental variables
 const PORT = process.env.PORT;
-const db = `mongodb+srv://Bill:${process.env.PASSWORD}@cluster0.fti7j.mongodb.net/quick_mechanic?retryWrites=true&w=majority`;
+const db = `mongodb+srv://Dru-Go:${process.env.PASSWORD}@tunnel1.kzror.gcp.mongodb.net/${process.env.DB}?retryWrites=true&w=majority`;
 
 // Connect to MongoDB with Mongoose.
 mongoose.Promise = global.Promise;

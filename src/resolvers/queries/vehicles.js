@@ -1,6 +1,6 @@
 // ANCHOR this will return all vehicles
-import Vehicle from '../../models/Vehicle';
+import { Vehicle } from '../../models';
 
-export default function vehicles () {
-    return Vehicle.find().catch((error) => console.log(error));
+export async function vehicles () {
+    return await Vehicle.find().catch((error) => console.log(error));
 }

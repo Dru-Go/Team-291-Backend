@@ -1,62 +1,68 @@
 {
-	"name": "Team-291-Backend",
-	"version": "1.0.0",
-	"engines": {
-		"node": "12.18.3",
-		"npm": "6.14.6"
-	},
-	"description": "[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0f431f9d67854c3ea59f3010d7f7b383)](https://app.codacy.com/gh/BuildForSDGCohort2/Team-291-Backend?utm_source=github.com&utm_medium=referral&utm_content=BuildForSDGCohort2/Team-291-Backend&utm_campaign=Badge_Grade_Settings)",
-	"main": "index.js",
-	"scripts": {
-		"test": "jest",
-		"dev": "nodemon src/index.js --exec babel-node -e js",
-		"clean": "rm -rf build && rm -rf coverage && mkdir build",
-		"build-babel": "babel -d ./build ./src -s",
-		"build": "npm run clean && npm run build-babel",
-		"start": "npm run build && node ./build/index.js"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Dru-Go/Team-291-Backend.git"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/Dru-Go/Team-291-Backend/issues"
-	},
-	"homepage": "https://github.com/Dru-Go/Team-291-Backend#readme",
-	"devDependencies": {
-		"@babel/cli": "^7.11.5",
-		"@babel/core": "*",
-		"@babel/node": "*",
-		"@babel/preset-env": "*",
-		"@shelf/jest-mongodb": "^1.2.3",
-		"babel-preset-stage-0": "^6.24.1",
-		"eslint": "^7.7.0",
-		"eslint-config-standard": "^14.1.1",
-		"eslint-plugin-import": "^2.22.0",
-		"eslint-plugin-node": "^11.1.0",
-		"eslint-plugin-promise": "^4.2.1",
-		"eslint-plugin-standard": "^4.0.1",
-		"husky": "^4.2.5",
-		"jest": "^26.4.2"
-	},
-	"dependencies": {
-		"bcryptjs": "^2.4.3",
-		"body-parser": "^1.19.0",
-		"cors": "^2.8.5",
-		"dotenv": "^8.2.0",
-		"express": "^4.17.1",
-		"express-graphql": "^0.11.0",
-		"geolib": "^3.3.1",
-		"graphql": "^15.3.0",
-		"joi": "^17.2.1",
-		"jsonwebtoken": "^8.5.1",
-		"mongoose": "^5.10.2",
-		"nodemon": "^2.0.4"
-	},
-	"eslintIgnore": [
-		"*.test.js"
-	]
+  "name": "Team-291-Backend",
+  "version": "1.0.0",
+  "engines": {
+    "node": "12.18.3",
+    "npm": "6.14.6"
+  },
+  "description": "[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0f431f9d67854c3ea59f3010d7f7b383)](https://app.codacy.com/gh/BuildForSDGCohort2/Team-291-Backend?utm_source=github.com&utm_medium=referral&utm_content=BuildForSDGCohort2/Team-291-Backend&utm_campaign=Badge_Grade_Settings)",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon src/index.js --exec babel-node -e js",
+    "clean": "rm -rf build && rm -rf coverage && mkdir build",
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dru-Go/Team-291-Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dru-Go/Team-291-Backend/issues"
+  },
+  "homepage": "https://github.com/Dru-Go/Team-291-Backend#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.11.5",
+    "@babel/core": "*",
+    "@babel/node": "*",
+    "@babel/preset-env": "*",
+    "@shelf/jest-mongodb": "^1.2.3",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^7.7.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.5",
+    "jest": "^26.4.2"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.11.0",
+    "geolib": "^3.3.1",
+    "graphql": "^15.3.0",
+    "joi": "^17.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.2",
+    "nodemon": "^2.0.4"
+  },
+  "eslintIgnore": [
+    "*.test.js"
+  ],
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true
+  }
 }

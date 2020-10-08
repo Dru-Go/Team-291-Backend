@@ -1,5 +1,5 @@
 // ANCHOR this will return all accounts
-import Account from '../../models/Account';
+import { Account } from '../../models';
 import JWT from 'jsonwebtoken';
 import bycript from 'bcryptjs';
 

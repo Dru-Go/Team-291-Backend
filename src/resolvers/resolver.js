@@ -1,27 +1,25 @@
 // ANCHOR we define the resolvers which are used as routes and controllers
-import { accounts } from './queries/accounts';
-import signUp from './mutations/signup';
-import { mechanics } from './queries/mechanics';
-import newMechanic from './mutations/newMechanic';
+import { allMechaincs, accounts, login } from './queries';
+import { newMechanic, signup, newBreakdown } from './mutations';
 
 const root = {
-    // SECTION Queries
-    hello: () => 'Hello Worlds',
-    mechanics: () => mechanics(),
-    accounts: () => accounts(),
-    vehicles: () => [],
-    drivers: () => [],
-    login: ({ input }) => [],
-    // !SECTION
+  // SECTION Queries
+  hello: () => 'Hello Worlds',
+  mechanics: () => allMechaincs(),
+  accounts: () => accounts(),
+  vehicles: () => [],
+  drivers: () => [],
+  login: (input) => login(input),
+  // !SECTION
 
-    // SECTION Mutations
-    addVehicles: () => [],
-    signUp: ({ input }) => signUp(input),
-    newBreakdown: () => {},
-    newVehicles: () => [],
-    // NOTE Creating a new mechanic
-    newMechanic: ({ input }) => newMechanic(input)
-    // !SECTION
+  // SECTION Mutations
+  addVehicles: () => [],
+  signUp: (input) => signup(input),
+  newBreakdown: (input) => newBreakdown(input),
+  newVehicles: () => [],
+  // NOTE Creating a new mechanic
+  newMechanic: (input) => newMechanic(input)
+  // !SECTION
 };
 
 export default root;

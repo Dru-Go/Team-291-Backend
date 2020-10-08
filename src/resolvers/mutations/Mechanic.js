@@ -1,8 +1,8 @@
 // ANCHOR this is the mutaion to create an mechanic
-import Mechanic from '../../models/Mechanic';
+import { Mechanic } from '../../models';
 import { parceArgs } from '../utils';
 
-export default async function newMechanic (input) {
+export const newMechanic = async (input) => {
     const args = parceArgs(input);
     const mechanic = new Mechanic({
         account: args.account,
@@ -20,4 +20,4 @@ export default async function newMechanic (input) {
         });
 
     return mechanic;
-}
+};

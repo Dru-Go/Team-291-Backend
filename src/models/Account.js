@@ -13,7 +13,7 @@ const AccountSchema = new Schema({
     type: String,
     required: true
   },
-  phone_no: {
+  phone: {
     type: String,
     required: true
   },
@@ -26,10 +26,9 @@ const AccountSchema = new Schema({
   },
    account_type: {
     type: String,
-    required: true
+    required: true,
+    enum: ['MECHANIC', 'DRIVER']
   }
 });
 
-const User = mongoose.model('Account', AccountSchema);
-
-export default User;
+export const User = mongoose.model('Account', AccountSchema);

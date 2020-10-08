@@ -13,12 +13,14 @@ const BreakdownSchema = new Schema({
     type: String,
     required: true
   },
-  optional_vehicle_info: {
-    type: String,
-    required: true
-  },
   type_of_breakdown: {
     type: String
+  },
+  vehicle: {
+    licence_plate_number: String,
+    brand: String,
+    type: String,
+    color: String
   },
   location: {
     latitude: Number,
@@ -26,6 +28,4 @@ const BreakdownSchema = new Schema({
   }
 }, { strict: false });
 
-const Breakdown = mongoose.model('Breakdown', BreakdownSchema);
-
-export default Breakdown;
+export const Breakdown = mongoose.model('Breakdown', BreakdownSchema);

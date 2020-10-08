@@ -5,6 +5,7 @@ import { buildSchema } from 'graphql';
 
 const schema = buildSchema(` 
 # ANCHOR this is the schema
+# SECTION Query and mutations
 type Query {
 	hello: String
 	"""
@@ -17,33 +18,20 @@ type Query {
 	accounts_by_id(id: String): Account!
 	vehicle_by_licence(licence: String): Vehicle!
 	vehicles_by_accountID(id: String): [Vehicle]
-    mechanics_details(id: String): Mechanic
+	mechanics_details(id: String): Mechanic
 	login(input: LoginInput): AuthDriverData!
-}
-
-input LoginInput {
-	email: String!
-	password: String!
+	breakdowns: [Vehicle_Breakdown]
 }
 
 type Mutation {
-	login(input: LoginInput): Account!
 	signUp(input: SignUpInput): Account!
 	newMechanic(input: MechanicInput): Mechanic!
 	newBreakdown(input: BreakdownInput): [Mechanic]!
 	newVehicle(input: VehicleInput): Vehicle!
 }
+# !SECTION
 
-type Location {
-	latitude: Float
-	longitude: Float
-}
-
-type AuthDriverData {
-	driverId: ID!
-	token: String!
-	tokenExpiration: Int!
-}
+# SECTION Inputs for queries and mutations
 
 input VehicleInput {
 	id: ID!
@@ -56,9 +44,10 @@ input VehicleInput {
 input MechanicInput {
 	account: ID!
 	company_name: String!
-	company_img: String
+	company_img: String!
+	company_phoneNo: String!
 	company_relative_location: String!
-	company_absolute_location: String! # lat long
+	company_absolute_location: Location! # lat long
 }
 
 input BreakdownInput {
@@ -66,30 +55,63 @@ input BreakdownInput {
 	time_of_injury: String!
 	type_of_breakdown: [VehicleFaliureTypes]
 	driver_comment: String
-	license_plate: String!
+	vehicle: Vehicle!
 	location: Location!
 }
+
+input LoginInput {
+	phone: String!
+	password: String!
+}
+
 
 input SignUpInput {
 	first_name: String!
 	last_name: String!
-	email: String!
+	phone: String!
 	password: String!
 	profile_img: String
 	account_type: AccountType!
 }
+# !SECTION
 
+# SECTION Enums
 enum VehicleFaliureTypes {
 	TIRE
 	ENGINE
 	FUEL
 	BREAK_LIGHTS
+	WARNING_LIGHTS
+	SPUTTERING_ENGINE
+	DEAD_BATTERY
+	FLAT_TYRES
+	BREAKS_SQUEAKING__Grinding
+	ALTERNATOR_FAILURE
+	BROKEN_STARTER_MOTOR
+	STEERING_WHEEL_SHAKING
+	FAILED_EMISSIONS
+	OVERHEATING
+	SLIPPING_TRANSMISSION
+	BATTARY_FALIURE
 	# and many more
 }
 
 enum AccountType {
 	MECHANIC
 	DRIVER
+}
+# !SECTION
+
+# SECTION Types
+type Location {
+	latitude: Float
+	longitude: Float
+}
+
+type AuthDriverData {
+	driverId: ID!
+	token: String!
+	tokenExpiration: Int!
 }
 
 # Here we have a Driver with
@@ -106,17 +128,18 @@ type Account {
 	profile_img: String
 	first_name: String
 	last_name: String
-	phone_no: String
+	phone: String
 	password: String
 	account_type: AccountType
 }
 
 type Mechanic {
 	account: ID
-	company_name: String
-	company_img: String
-	company_relative_location: String
-	company_absolute_location: Location # lat long
+	company_name: String!
+	company_img: String!
+	company_relative_location: String!
+	company_phoneNo: String!
+	company_absolute_location: Location! # lat long
 	# mechanic with multiple reviews
 	reviews: [String]
 }
@@ -134,9 +157,11 @@ type Vehicle_Breakdown {
 	driver_comment: String
 	# vehicle can have multiple faliure types
 	type_of_breakdown: [VehicleFaliureTypes]
-	license_plate: String
+	vehicle: Vehicle!
 	location: Location
 }
+# !SECTION
+
 
 `);
 

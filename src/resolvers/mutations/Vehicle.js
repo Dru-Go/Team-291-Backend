@@ -1,8 +1,8 @@
 // ANCHOR this is the mutaion to create an vehicle
-import Vehicle from '../../models/Vehicle';
+import { Vehicle } from '../../models';
 import { parceArgs } from '../utils';
 
-export default function newVehicle (input) {
+export const newVehicle = (input) => {
     const args = parceArgs(input);
     const vehicle = new Vehicle({
         license_plate_number: args.license_plate_number,
@@ -17,4 +17,4 @@ export default function newVehicle (input) {
         .catch((error) => {
             console.log(error);
         });
-}
+};

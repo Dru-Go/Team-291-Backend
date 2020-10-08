@@ -33,13 +33,11 @@ Because of `strict: false`, you can store any additional properties
 Eg
 const doc = new Mechanic({
   company_absolute_location: {
-    latitude: "123.45",
-    longitude: "34.4"
+    latitude: 123.45,
+    longitude: 34.4
   }
 });
 
 */
 
-const Mechanic = mongoose.model('Mechanic', MechanicSchema);
-
-export default Mechanic;
+export const Mechanic = mongoose.model('Mechanic', MechanicSchema);

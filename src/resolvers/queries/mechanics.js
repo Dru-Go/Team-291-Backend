@@ -1,7 +1,7 @@
 // ANCHOR this will return mechanics
-import Mechanic from '../../models/Mechanic';
+import { Mechanic } from '../../models';
 import geolib from 'geolib';
-export async function mechanics () {
+async function mechanics () {
     return await Mechanic.find().catch((error) => console.log(error));
 }
 
@@ -14,7 +14,7 @@ export async function mechanics () {
 
 */
 
-const allMechaincs = mechanics();
+export const allMechaincs = mechanics();
 
 function getDistance (source, mech) {
     return { mechanic: mech, distanceFromSource: geolib.getDistance(source, mech.location) };

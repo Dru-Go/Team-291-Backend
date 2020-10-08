@@ -1,11 +1,10 @@
 // ANCHOR this is the mutaion to create an account
-import Account from '../../models/Account';
-import { parceArgs } from '../utils';
-import bycript from 'bcryptjs';
+import { Account } from '../../models';
+import { parceArgs, hashPassword } from '../utils';
 
-export default async function signup (input) {
+export const signup = async (input) => {
     const args = parceArgs(input);
-    const hashedPassword = await bycript.hash(args.driverInput.password, 12);
+    const hashedPassword = hashPassword(args.driverInput.password, 12);
     const account = new Account({
         first_name: args.first_name,
         last_name: args.last_name,
@@ -23,4 +22,4 @@ export default async function signup (input) {
             throw new Error(`Error: ${error}`);
         });
     return input;
-}
+};

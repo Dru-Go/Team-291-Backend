@@ -1,6 +1,6 @@
 // ANCHOR this will return all drivers
-import Drivers from '../../models/Drivers';
+import { Drivers } from '../../models';
 
-export default async function drivers () {
+export async function drivers () {
     return await Drivers.find().catch((error) => console.log(error));
 }
