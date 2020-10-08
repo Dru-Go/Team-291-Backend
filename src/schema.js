@@ -47,7 +47,8 @@ input MechanicInput {
 	company_img: String!
 	company_phoneNo: String!
 	company_relative_location: String!
-	company_absolute_location: Location! # lat long
+	latitude: Float!
+	longitude: Float!
 }
 
 input BreakdownInput {
@@ -55,8 +56,12 @@ input BreakdownInput {
 	time_of_injury: String!
 	type_of_breakdown: [VehicleFaliureTypes]
 	driver_comment: String
-	vehicle: Vehicle!
-	location: Location!
+	license_plate_number: String # Serves as an id
+	brand: String
+	type: String
+	color: String	
+	latitude: Float!
+	longitude: Float!
 }
 
 input LoginInput {
@@ -106,6 +111,11 @@ enum AccountType {
 type Location {
 	latitude: Float
 	longitude: Float
+}
+
+type Location_input {
+  latitude: Float
+  longitude: Float
 }
 
 type AuthDriverData {
@@ -161,7 +171,6 @@ type Vehicle_Breakdown {
 	location: Location
 }
 # !SECTION
-
 
 `);
 
