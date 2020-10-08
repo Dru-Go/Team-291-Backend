@@ -9,12 +9,13 @@ export const accounts = async () => {
 };
 
 // NOTE login to the system using email and a password
-export const login = async ({ phone, password }) => {
-	const account = await User.findOne({ phone: phone });
+export const login = async ({ input }) => {
+	const account = await User.findOne({ phone: input.phone });
 	if (!account) {
 		throw new Error('Account does not exist');
 	}
-	const isEqual = await bcrypt.compare(password, account.password);
+	console.log(input.password === account.password);
+	const isEqual = bcrypt.compare(input.password, account.password);
 
 	if (!isEqual) {
 		throw new Error('Password is incorrect');
