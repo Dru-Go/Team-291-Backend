@@ -2,9 +2,8 @@
 import {
   allMechaincs,
   login,
-  accounts
+  accounts, breakdownsByAccountID, breakdowns
 } from './queries';
-import { Breakdown } from '../models';
 import { newMechanic, signup, newBreakdown } from './mutations';
 
 const root = {
@@ -12,9 +11,8 @@ const root = {
   hello: () => 'Hello Worlds',
   mechanics: () => allMechaincs(),
   accounts: () => accounts(),
-  breakdownsByAccountID: ({ id }) => Breakdown.find({ account: id }).catch((error) =>
-    console.log(error)
-  ),
+  breakdowns: () => breakdowns(),
+  breakdownsByAccountID: ({ id }) => breakdownsByAccountID(id),
   login: (input) => login(input),
   // !SECTION
 
