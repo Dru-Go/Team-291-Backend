@@ -4,29 +4,31 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 // NOTE Create the Mechanic Schema.
-const MechanicSchema = new Schema({
-  account: {
-    type: mongoose.Types.ObjectId,
-    required: true,
-    unique: true
+const MechanicSchema = new Schema(
+  {
+    company_name: {
+      type: String,
+      required: true
+    },
+    company_img: {
+      type: String,
+      required: true
+    },
+    company_phoneNo: {
+      type: String,
+      required: true
+    },
+    company_relative_location: {
+      type: String,
+      required: true
+    },
+    company_absolute_location: {
+      latitude: Number,
+      longitude: Number
+    }
   },
-  company_name: {
-    type: String,
-    required: true
-  },
-  company_img: {
-    type: String,
-    required: true
-  },
-  company_relative_location: {
-    type: String,
-    required: true
-  },
-  company_absolute_location: {
-    latitude: Number,
-    longitude: Number
-  }
-}, { strict: false });
+  { strict: false }
+);
 
 /*
 Because of `strict: false`, you can store any additional properties

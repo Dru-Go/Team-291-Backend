@@ -1,24 +1,33 @@
 // ANCHOR this is the mutaion to create an breakdown
 import { Breakdown } from '../../models';
-import { parceArgs } from '../utils';
-import { closestMechanics } from '../queries/mechanics';
-export const newBreakdown = async (input) => {
-     const args = parceArgs(input);
-     const breakdown = new Breakdown({
-            time_of_crisis: args.time_of_crisis,
-            driver_comment: args.driver_comment,
-            optional_vehicle_info: args.optional_vehicle_info,
-            type_of_breakdown: args.type_of_breakdown,
-            vehicle: args.vehicle,
-            location: args.location
-        });
+import { parceArgs, closestMechanics } from '../utils';
+export const newBreakdown = async (breaks) => {
+  const { input } = parceArgs(breaks);
 
-    await breakdown
-        .save()
-        .then(console.log(`Inserted is ${breakdown}`))
-        .catch((error) => {
-            console.log(error);
-        });
+  const breakdown = new Breakdown({
+    account_id: input.account_id,
+    time_of_crisis: input.time_of_crisis,
+    driver_comment: input.driver_comment,
+    optional_vehicle_info: input.optional_vehicle_info,
+    type_of_breakdown: input.type_of_breakdown,
+    vehicle: {
+      license_plate_number: input.license_plate_number,
+      brand: input.brand,
+      v_type: input.type,
+      color: input.color
+    },
+    location: {
+      latitude: input.latitude,
+      longitude: input.longitude
+    }
+  });
 
-        return closestMechanics(args.location_url);
-    };
+  await breakdown
+    .save()
+    .then(console.log(`Inserted is ${breakdown}`))
+    .catch((error) => {
+      console.log(error);
+    });
+
+  return closestMechanics({ latitude: input.latitude, longitude: input.longitude }, 10);
+};

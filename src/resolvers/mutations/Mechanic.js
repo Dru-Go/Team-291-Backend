@@ -2,22 +2,25 @@
 import { Mechanic } from '../../models';
 import { parceArgs } from '../utils';
 
-export const newMechanic = async (input) => {
-    const args = parceArgs(input);
-    const mechanic = new Mechanic({
-        account: args.account,
-        company_name: args.company_name,
-        company_img: args.company_img,
-        company_relative_location: args.company_relative_location,
-        company_absolute_location: args.company_absolute_location
+export const newMechanic = async (mech) => {
+  const { input } = parceArgs(mech);
+  const mechanic = new Mechanic({
+    company_name: input.company_name,
+    company_img: input.company_img,
+    company_relative_location: input.company_relative_location,
+    company_phoneNo: input.company_phoneNo,
+    company_absolute_location: {
+      latitude: input.latitude,
+      longitude: input.longitude
+    }
+  });
+
+  await mechanic
+    .save()
+    .then(console.log(`Inserted is ${mechanic}`))
+    .catch((error) => {
+      console.log(error);
     });
 
-    await mechanic
-        .save()
-        .then(console.log(`Inserted is ${mechanic}`))
-        .catch((error) => {
-            console.log(error);
-        });
-
-    return mechanic;
+  return mechanic;
 };
