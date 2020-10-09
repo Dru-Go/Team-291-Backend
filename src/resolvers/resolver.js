@@ -1,21 +1,26 @@
 // ANCHOR we define the resolvers which are used as routes and controllers
-import { allMechaincs, login, breakdownsByAccountID } from './queries';
+import {
+  allMechaincs,
+  login,
+  accounts
+} from './queries';
+import { Breakdown } from '../models';
 import { newMechanic, signup, newBreakdown } from './mutations';
 
 const root = {
   // SECTION Queries
   hello: () => 'Hello Worlds',
   mechanics: () => allMechaincs(),
-  breakdownsByAccountID: () => breakdownsByAccountID(),
+  accounts: () => accounts(),
+  breakdownsByAccountID: ({ id }) => Breakdown.find({ account: id }).catch((error) =>
+    console.log(error)
+  ),
   login: (input) => login(input),
   // !SECTION
 
   // SECTION Mutations
-  addVehicles: () => [],
   signUp: (input) => signup(input),
   newBreakdown: (input) => newBreakdown(input),
-  newVehicles: () => [],
-  // NOTE Creating a new mechanic
   newMechanic: (input) => newMechanic(input)
   // !SECTION
 };

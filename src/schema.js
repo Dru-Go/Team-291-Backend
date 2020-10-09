@@ -41,7 +41,7 @@ input MechanicInput {
 }
 
 input BreakdownInput {
-  account_id: String!
+  account: String!
   time_of_crisis: String!
   type_of_breakdown: VehicleFaliureTypes
   driver_comment: String
@@ -157,6 +157,7 @@ type Vehicle {
 
 type Vehicle_Breakdown {
   id: ID
+  account: String
   time_of_injury: String
   driver_comment: String
   # vehicle can have multiple faliure types

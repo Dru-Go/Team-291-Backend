@@ -5,7 +5,7 @@ export const newBreakdown = async (breaks) => {
   const { input } = parceArgs(breaks);
 
   const breakdown = new Breakdown({
-    account_id: input.account_id,
+    account: input.account,
     time_of_crisis: input.time_of_crisis,
     driver_comment: input.driver_comment,
     optional_vehicle_info: input.optional_vehicle_info,
