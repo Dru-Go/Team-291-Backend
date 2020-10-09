@@ -8,6 +8,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import 'regenerator-runtime/runtime';
+import 'babel-polyfill';
 // Listen for the port
 dotenv.config();
 
