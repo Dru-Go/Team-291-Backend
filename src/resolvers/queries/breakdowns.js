@@ -6,7 +6,6 @@ export async function breakdowns () {
 }
 
 export async function breakdownsByAccountID (id) {
-  console.log('Passed', id);
   return await Breakdown.find({ account: id }).catch((error) =>
     console.log(error)
   );
