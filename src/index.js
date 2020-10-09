@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-
+import 'regenerator-runtime/runtime';
 // Listen for the port
 dotenv.config();
 
