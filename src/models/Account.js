@@ -27,7 +27,7 @@ const AccountSchema = new Schema({
    account_type: {
     type: String,
     required: true,
-    enum: ['MECHANIC', 'DRIVER']
+    enum: ['MECHANIC', 'DRIVER', 'ADMIN']
   }
 });
 

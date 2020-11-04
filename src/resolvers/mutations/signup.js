@@ -4,7 +4,7 @@ import { parceArgs } from '../utils';
 import bcrypt from 'bcrypt';
 
 export const signup = async (user) => {
-    const { input } = parceArgs(user);
+    const input = parceArgs(user);
     const hashedPassword = (await bcrypt.hash(input.password, 10)).toString();
     const account = new User({
         first_name: input.first_name,

@@ -3,7 +3,7 @@ import { Mechanic } from '../../models';
 import { parceArgs } from '../utils';
 
 export const newMechanic = async (mech) => {
-  const { input } = parceArgs(mech);
+  const input = parceArgs(mech);
   const mechanic = new Mechanic({
     company_name: input.company_name,
     company_img: input.company_img,

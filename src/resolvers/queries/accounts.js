@@ -27,5 +27,5 @@ export const login = async ({ input }) => {
 			expiresIn: '1h'
 		}
 	);
-	return { driverId: account.id, token: token, tokenExpiration: 1 }; ;
+	return { driverId: account.id, token: token, tokenExpiration: 1 };
 };

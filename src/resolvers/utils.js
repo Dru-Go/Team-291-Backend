@@ -26,7 +26,7 @@ function getDistances (source, mech) {
 function sortMechanics (hashmaps, limit) {
   // NOTE sort the mechaics based on the distance from the source and return the first $limit elements
     hashmaps.sort((a, b) => a.distanceFromSource - b.distanceFromSource);
-    console.log('sorted mechanics', hashmaps);
+    console.log('sorted mechanics', hashmaps, limit);
   return hashmaps;
 }
 

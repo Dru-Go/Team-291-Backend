@@ -32,6 +32,7 @@ input VehicleInput {
 }
 
 input MechanicInput {
+  account: String!
   company_name: String!
   company_img: String!
   company_phoneNo: String!
@@ -64,7 +65,6 @@ input SignUpInput {
   phone: String!
   password: String!
   profile_img: String
-  account_type: AccountType!
 }
 # !SECTION
 
@@ -92,6 +92,7 @@ enum VehicleFaliureTypes {
 enum AccountType {
   MECHANIC
   DRIVER
+  ADMIN
 }
 # !SECTION
 
@@ -134,7 +135,6 @@ type Account {
   last_name: String
   phone: String
   password: String
-  account_type: AccountType
 }
 
 type Mechanic {
@@ -158,7 +158,7 @@ type Vehicle {
 type Vehicle_Breakdown {
   id: ID
   account: String
-  time_of_injury: String
+  time_of_crisis: String
   driver_comment: String
   # vehicle can have multiple faliure types
   type_of_breakdown: [VehicleFaliureTypes]
