@@ -65,6 +65,12 @@ input SignUpInput {
   phone: String!
   password: String!
   profile_img: String
+  account_type: String!
+}
+
+type Location_input {
+  latitude: Float
+  longitude: Float
 }
 # !SECTION
 
@@ -108,10 +114,6 @@ type Location {
   longitude: Float
 }
 
-type Location_input {
-  latitude: Float
-  longitude: Float
-}
 
 type AuthDriverData {
   driverId: ID!

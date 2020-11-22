@@ -2,7 +2,7 @@
 import { Breakdown } from '../../models';
 import { parceArgs, closestMechanics } from '../utils';
 export const newBreakdown = async (breaks) => {
-  const input = parceArgs(breaks);
+  const { input } = parceArgs(breaks);
 
   const breakdown = new Breakdown({
     account: input.account,
@@ -30,7 +30,10 @@ export const newBreakdown = async (breaks) => {
     });
 
   return closestMechanics(
-    { latitude: input.latitude, longitude: input.longitude },
+    {
+      latitude: input.latitude,
+      longitude: input.longitude
+    },
     10
   );
 };
