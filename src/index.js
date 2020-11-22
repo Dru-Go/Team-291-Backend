@@ -11,16 +11,18 @@ import mongoose from 'mongoose';
 // Listen for the port
 dotenv.config();
 
+const uri = 'mongodb://127.0.0.1:27017/quick_mechanic';
+
 // Setting up the enviromental variables
 const PORT = process.env.PORT;
-const db = `mongodb+srv://Dru-Go:${process.env.PASSWORD}@tunnel1.kzror.gcp.mongodb.net/${process.env.DB}?retryWrites=true&w=majority`;
+// const db = `mongodb+srv://Dru-Go:${process.env.PASSWORD}@tunnel1.kzror.gcp.mongodb.net/${process.env.DB}?retryWrites=true&w=majority`;
 
 // Connect to MongoDB with Mongoose.
 mongoose.Promise = global.Promise;
 mongoose.set('useFindAndModify', false);
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => console.log('Server Connected to database'))
-.catch(err => { console.log(db); console.error(err); });
+.catch(err => { console.log(uri); console.error(err); });
 
 // Initialize Express server
 const app = express();
